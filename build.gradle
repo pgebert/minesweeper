@@ -60,6 +60,9 @@ subprojects {
     tasks.withType(JavaCompile) {
         options.encoding = 'utf-8'
     }
+
+    mainClassName = 'minesweeper.MainKt'
+    run { standardInput = System.in }
 }
 
 project(':util') {
@@ -68,7 +71,7 @@ project(':util') {
     }
 }
 
-configure(subprojects.findAll {it.name != 'util'}) {
+configure(subprojects.findAll { it.name != 'util' }) {
     dependencies {
         testImplementation project(':util').sourceSets.main.output
         testImplementation project(':util').sourceSets.test.output
